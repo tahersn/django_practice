@@ -7,6 +7,8 @@ def eventDateValidator(value):
     if value < datetime.date.today():
         raise ValidationError('Invalid date - event is in the past')
 
+    
+
 CATEG_CHOICES = (
     ('MUSIC', 'MUSIC'),
     ('SPORT', 'SPORT'),

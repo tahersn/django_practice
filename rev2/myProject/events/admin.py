@@ -29,7 +29,9 @@ class EventAdmin(admin.ModelAdmin):
         'title',
         'category'
     ]
-
+    fieldsets = [
+        ('Event', {'fields': [('title','category'),'description','image','eventDate','satate']}),
+    ]
     inlines = [ParticipateInline]
     def delete_selected(self, request, queryset):
         queryset.delete()
@@ -51,7 +53,14 @@ class EventAdmin(admin.ModelAdmin):
      else:
         message = f"{rows} events were"
      messages.success(request, message="% successfully accepted" % message)
+class participationAdmin(admin.ModelAdmin):
+    fields = ['person','event','date']
+    list_display = ('person','event','date')
+    list_filter = ('person','event','date')
+    search_fields = ('person','event','date')
+    ordering = ['person']
+    actions = ['delete_selected']
 
 
 admin.site.register(Event,EventAdmin)
-admin.site.register(participation)
+admin.site.register(participation,participationAdmin)

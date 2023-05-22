@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul>
+        {% for event in events %}
+            <li>
+                <a href="{% url 'eventDetails' event.id %}">{{ event.title }}</a>
+            </li>
+            <li>
+                <a>{{ event.description }}</a>
+            </li>
+            <div >
+                <img style="height: 50px; width: 50px;" src="{{ event.image.url }}" alt="Event Image">
+            </div>
+        {% endfor %}
+    </ul>
+{% endblock %}

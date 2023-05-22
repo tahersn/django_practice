@@ -23,7 +23,7 @@ from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('events/', include('events.urls'))
+    path('', include('events.urls'))
 ]
 # Serve media files during development
 if settings.DEBUG:
